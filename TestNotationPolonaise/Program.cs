@@ -49,7 +49,7 @@ namespace TestNotationPolonaise
                                 resultat = val1 / val2;
                                 break;
                         }
-                        // assignation du résultat à la case du vecteur contenant l'opérateur
+                        // assignation du résultat à la place de l'opérateur
                         nombres[i] = resultat.ToString();
                         // décalage des cases suivantes
                         for (int k = i + 1; k < nombres.Length - 2; k++)
