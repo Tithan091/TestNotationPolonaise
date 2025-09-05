@@ -14,8 +14,8 @@ namespace TestNotationPolonaise
             try
             {
                 string[] nombres = formule.Split(' ');
-                double val1 = 0;
-                double val2 = 0;
+                double val1;
+                double val2;
                 for (int i = nombres.Length - 1; i >= 0; i--)
                 {
                     if (nombres[i] == "+" || nombres[i] == "-" || nombres[i] == "*" || nombres[i] == "/")
