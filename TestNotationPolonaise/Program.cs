@@ -69,7 +69,7 @@ namespace TestNotationPolonaise
                         }
                     }
                 }
-                // retourner le résultat qui est contenu dans la première case du vecteur
+                // retourner le résultat final qui est contenu dans la première case du vecteur
                 return double.Parse(nombres[0]);
             }
             catch
