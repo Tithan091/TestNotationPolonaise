@@ -16,6 +16,7 @@ namespace TestNotationPolonaise
                 string[] nombres = formule.Split(' ');
                 double val1;
                 double val2;
+                double resultat = 0;
                 for (int i = nombres.Length - 1; i >= 0; i--)
                 {
                     if (nombres[i] == "+" || nombres[i] == "-" || nombres[i] == "*" || nombres[i] == "/")
@@ -25,22 +26,23 @@ namespace TestNotationPolonaise
                         switch (nombres[i])
                         {
                             case "+":
-                                nombres[i] = (val1 + val2).ToString();
+                                resultat = val1 + val2;
                                 break;
                             case "-":
-                                nombres[i] = (val1 - val2).ToString();
+                                resultat = val1 - val2;
                                 break;
                             case "*":
-                                nombres[i] = (val1 * val2).ToString();
+                                resultat = val1 * val2;
                                 break;
                             case "/":
                                 if (val2 == 0)
                                 {
                                     return double.NaN;
                                 }
-                                nombres[i] = (val1 / val2).ToString();
+                                resultat = val1 / val2;
                                 break;
                         }
+                        nombres[i] = resultat.ToString();
                         for (int k = i + 1; k < nombres.Length - 2; k++)
                         {
                             nombres[k] = nombres[k + 2];
