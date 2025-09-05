@@ -74,6 +74,7 @@ namespace TestNotationPolonaise
             }
             catch
             {
+                // en cas d'erreur
                 return float.NaN;
             }
         }
