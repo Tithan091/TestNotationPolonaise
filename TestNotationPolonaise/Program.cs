@@ -14,12 +14,14 @@ namespace TestNotationPolonaise
             try
             {
                 string[] nombres = formule.Split(' ');
+                double val1 = 0;
+                double val2 = 0;
                 for (int i = nombres.Length - 1; i >= 0; i--)
                 {
                     if (nombres[i] == "+" || nombres[i] == "-" || nombres[i] == "*" || nombres[i] == "/")
                     {
-                        double val1 = double.Parse(nombres[i + 1]);
-                        double val2 = double.Parse(nombres[i + 2]);
+                        val1 = double.Parse(nombres[i + 1]);
+                        val2 = double.Parse(nombres[i + 2]);
                         switch (nombres[i])
                         {
                             case "+":
@@ -34,7 +36,7 @@ namespace TestNotationPolonaise
                             case "/":
                                 if (val2 == 0)
                                 {
-                                    throw new Exception();
+                                    return double.NaN;
                                 }
                                 nombres[i] = (val1 / val2).ToString();
                                 break;
@@ -50,7 +52,7 @@ namespace TestNotationPolonaise
                     {
                         if (i == 0 && nombres.Length > 1)
                         {
-                            throw new Exception();
+                            return double.NaN;
                         }
                     }
                 }
