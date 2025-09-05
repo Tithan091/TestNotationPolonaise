@@ -5,6 +5,64 @@ namespace TestNotationPolonaise
     class Program
     {
         /// <summary>
+        /// Calcul de formules en notation polonaise
+        /// </summary>
+        /// <param name="formule">formule à calculer</param>
+        /// <returns>resultat de la formule</returns>
+        static double Polonaise(String formule)
+        {
+            try
+            {
+                string[] nombres = formule.Split(' ');
+                for (int i = nombres.Length - 1; i >= 0; i--)
+                {
+                    if (nombres[i] == "+" || nombres[i] == "-" || nombres[i] == "*" || nombres[i] == "/")
+                    {
+                        double val1 = double.Parse(nombres[i + 1]);
+                        double val2 = double.Parse(nombres[i + 2]);
+                        switch (nombres[i])
+                        {
+                            case "+":
+                                nombres[i] = (val1 + val2).ToString();
+                                break;
+                            case "-":
+                                nombres[i] = (val1 - val2).ToString();
+                                break;
+                            case "*":
+                                nombres[i] = (val1 * val2).ToString();
+                                break;
+                            case "/":
+                                if (val2 == 0)
+                                {
+                                    throw new Exception();
+                                }
+                                nombres[i] = (val1 / val2).ToString();
+                                break;
+                        }
+                        for (int k = i + 1; k < nombres.Length - 2; k++)
+                        {
+                            nombres[k] = nombres[k + 2];
+                        }
+                        nombres[nombres.Length - 1] = " ";
+                        nombres[nombres.Length - 2] = " ";
+                    }
+                    else
+                    {
+                        if (i == 0 && nombres.Length > 1)
+                        {
+                            throw new Exception();
+                        }
+                    }
+                }
+                return double.Parse(nombres[0]);
+            }
+            catch
+            {
+                return float.NaN;
+            }
+        }
+
+        /// <summary>
         /// saisie d'une réponse d'un caractère parmi 2
         /// </summary>
         /// <param name="message">message à afficher</param>
