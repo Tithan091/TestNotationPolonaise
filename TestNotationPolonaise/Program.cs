@@ -13,16 +13,22 @@ namespace TestNotationPolonaise
         {
             try
             {
+                // transformation de la formule en vecteur
                 string[] nombres = formule.Split(' ');
+                // déclaration
                 double val1;
                 double val2;
                 double resultat = 0;
+                // lecture et calcul de la formule
                 for (int i = nombres.Length - 1; i >= 0; i--)
                 {
+                    // si la valeur correspond à un opérateur mathématique
                     if (nombres[i] == "+" || nombres[i] == "-" || nombres[i] == "*" || nombres[i] == "/")
                     {
+                        // récupérer les deux nombres suivants dans le vecteur
                         val1 = double.Parse(nombres[i + 1]);
                         val2 = double.Parse(nombres[i + 2]);
+                        // calcul des deux nombres
                         switch (nombres[i])
                         {
                             case "+":
@@ -35,6 +41,7 @@ namespace TestNotationPolonaise
                                 resultat = val1 * val2;
                                 break;
                             case "/":
+                                // si division par 0
                                 if (val2 == 0)
                                 {
                                     return double.NaN;
@@ -42,22 +49,27 @@ namespace TestNotationPolonaise
                                 resultat = val1 / val2;
                                 break;
                         }
+                        // assignation du résultat à la case du vecteur contenant l'opérateur
                         nombres[i] = resultat.ToString();
+                        // décalage des cases suivantes
                         for (int k = i + 1; k < nombres.Length - 2; k++)
                         {
                             nombres[k] = nombres[k + 2];
                         }
+                        // vider les deux dernières cases du vecteur (inutile après le premier calcul)
                         nombres[nombres.Length - 1] = " ";
                         nombres[nombres.Length - 2] = " ";
                     }
                     else
                     {
+                        // si la première case du vecteur n'est pas un signe
                         if (i == 0 && nombres.Length > 1)
                         {
                             return double.NaN;
                         }
                     }
                 }
+                // retourner le résultat qui est contenu dans la première case du vecteur
                 return double.Parse(nombres[0]);
             }
             catch
