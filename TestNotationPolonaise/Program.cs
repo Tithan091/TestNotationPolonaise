@@ -7,8 +7,8 @@ namespace TestNotationPolonaise
         /// <summary>
         /// Calcul de formules en notation polonaise
         /// </summary>
-        /// <param name="formule">formule à calculer</param>
-        /// <returns>resultat de la formule</returns>
+        /// <param name="formule">formule en notation polonaise</param>
+        /// <returns>résultat de la formule</returns>
         static double Polonaise(String formule)
         {
             try
